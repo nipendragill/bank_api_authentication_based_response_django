@@ -1,5 +1,5 @@
 version: 2
-  jobs:
+jobs:
     build:
       docker:
           - image: circleci/python:3.6.4
@@ -11,7 +11,7 @@ version: 2
                POSTGRES_USER: postgres
                POSTGRES_DB: db1
       working_directory: ~/bank_api_authentication_based_response_django
-
+    
       steps:
         - checkout
         - run: sudo chown -R circleci:circleci /usr/local/bin
@@ -33,7 +33,4 @@ version: 2
             pipenv run python manage.py test
             
         - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-            path: test-results
-              - store_artifacts: # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-                  path: test-results
-                  destination: tr1
+           
